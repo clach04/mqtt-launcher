@@ -1,0 +1,17 @@
+# from https://www.raspberrypi.org/documentation/linux/usage/systemd.md
+[Unit]
+Description=mqtt-launcher service
+After=network.target
+
+[Service]
+Environment=MQTTLAUNCHERCONFIG=/home/pi/py/mqtt-launcher/launcher.json
+ExecStart=/home/pi/py/mqtt-launcher/mqtt-launcher.py
+WorkingDirectory=/tmp
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=pi
+
+[Install]
+WantedBy=multi-user.target
+

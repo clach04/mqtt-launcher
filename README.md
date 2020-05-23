@@ -117,6 +117,43 @@ or stderr if not specified.
 pip install -r requirements.txt
 ```
 
+### Install Systemd service
+
+## mqtt-launcher service
+
+Systemd service (e.g. for Raspbian).
+
+Based on https://www.raspberrypi.org/documentation/linux/usage/systemd.md
+
+NOTE hard coded paths for `WorkingDirectory`, `Environment`, and `ExecStart` in `mqtt-launcher.service`.
+
+Install
+
+    cd scripts
+    sudo cp mqtt-launcher.service /etc/systemd/system/mqtt-launcher.service
+    sudo chmod 644 /etc/systemd/system/mqtt-launcher.service
+    sudo systemctl enable mqtt-launcher.service
+
+Usage
+
+    sudo systemctl stop mqtt-launcher.service
+    sudo systemctl start mqtt-launcher.service
+    sudo systemctl restart mqtt-launcher.service
+    sudo systemctl status mqtt-launcher.service  # status and recent logs
+    sudo systemctl status mqtt-launcher.service -n 100  # show last 100 log entries
+    journalctl  -u mqtt-launcher.service  # show all logs
+
+    sudo systemctl status mqtt-launcher_https.service -n 100
+
+
+    systemctl list-unit-files --state=enabled | grep mqtt-launcher
+
+NOTE if changing service files, e.g. adding `Environment`, restart config (not just specific service):
+
+    sudo systemctl daemon-reload
+    sudo systemctl restart mqtt-launcher.service
+
+
 ## Credits
 
 This program was inspired by two related tools:
