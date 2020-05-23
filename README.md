@@ -105,6 +105,12 @@ _mqtt-launcher_ logs its operation in the file configured as `logfile`.
 * Python
 * [paho-mqtt](https://pypi.python.org/pypi/paho-mqtt/1.3.1)
 
+### Install
+
+```
+pip install -r requirements.txt
+```
+
 ## Credits
 
 This program was inspired by two related tools:

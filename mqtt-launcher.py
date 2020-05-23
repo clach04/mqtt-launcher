@@ -34,10 +34,12 @@ import os
 import sys
 import subprocess
 import logging
-import paho.mqtt.client as paho   # pip install paho-mqtt
 import time
 import socket
 import string
+
+import paho.mqtt.client as paho   # pip install paho-mqtt
+
 
 qos=2
 CONFIG=os.getenv('MQTTLAUNCHERCONFIG', 'launcher.conf')
