@@ -90,7 +90,7 @@ def runprog(topic, param=None):
         cmd = topiclist[topic].get(param)
     else:
         if "null" in topiclist[topic]: ### and topiclist[topic][None] is not None:
-            cmd = [p.replace('@!@', param) for p in topiclist[topic]["null"]]
+            cmd = [p.replace('@!@', param).replace('\n', ' ') for p in topiclist[topic]["null"]]
         else:
             logging.info("No matching param (%s) for %s" % (param, topic))
             return
