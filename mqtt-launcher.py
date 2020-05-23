@@ -58,7 +58,7 @@ except Exception as e:
     print("Cannot load configuration from file %s: %s" % (CONFIG, str(e)))
     sys.exit(2)
 
-LOGFILE = cf.get('logfile', 'logfile')
+LOGFILE = cf.get('logfile')  # default to stderr
 LOGFORMAT = '%(asctime)-15s %(message)s'
 DEBUG=True
 
